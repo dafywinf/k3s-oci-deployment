@@ -12,4 +12,8 @@ accounts, this allowance is equivalent to 4 OCPUs and 24 GB of memory.
 
 ## Pre-requisites: Access to an OCI Account
 
-1. Create an Oracle Cloud Infrastructure (OCI) account ([run-book](documentation/run-books/oci-account-creation.md)).
+1. Create an Oracle Cloud Infrastructure (OCI)
+   account ([run-book](documentation/run-books/RB-01-oci-account-creation.md)).
+2. Install the OCI CLI ([run-book](documentation/run-books/RB-02-oci-cli-setup.md)).
+3. Create a compartment as a logical container for all associated
+   resources ([run-book](documentation/run-books/RB-03-create-compartment.md)).

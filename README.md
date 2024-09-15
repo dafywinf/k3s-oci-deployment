@@ -79,3 +79,23 @@ Run the following command to create the infrastructure:
 ```bash
 terraform apply
 ```
+
+# Appendix
+
+## Renaming Terraform Resources
+
+Renaming a resource in Terraform can cause Terraform to interpret this change as the removal of the old resource and the
+creation of a new one. This behaviour occurs because Terraform tracks resources using the resource_type and
+resource_name combination in the state file. When you change the resource_name, Terraform sees it as a completely new
+resource, which leads to the following actions during the next terraform apply:
+
+* Destroy the Old Resource: Terraform will destroy the resource with the old name.
+* Create the New Resource: Terraform will then create a new resource with the new name.
+
+The terraform state mv command allows you to rename resources in the Terraform state without actually destroying and
+recreating them. This command updates the Terraform state file to reflect the new name, so Terraform understands that
+the resource is being renamed rather than replaced.
+
+```bash
+terraform state mv <resource_type>.<old_resource_name> <resource_type>.<new_resource_name>
+```

@@ -18,3 +18,10 @@ provider "oci" {
     private_key_path     = var.private_key_path
     private_key_password = var.private_key_password
 }
+
+resource "oci_identity_compartment" "k3s-compartment" {
+    compartment_id = var.compartment_id
+    name           = "k3s-compartment"
+    description    = "Compartment for K3s resources"
+    enable_delete  = true
+}

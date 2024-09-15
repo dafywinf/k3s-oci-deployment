@@ -1,4 +1,4 @@
-# hello-world-oci
+# K3s Deployment on Oracle Cloud Infrastructure (OCI)
 
 Proof of Concept (PoC) application for setting up the infrastructure and deploying a Spring Boot application to an
 Oracle Cloud Infrastructure (OCI) account.

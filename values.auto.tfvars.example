@@ -1,0 +1,7 @@
+region               = ""
+tenancy_ocid         = ""
+user_ocid            = ""
+fingerprint          = ""
+private_key_path     = ""
+private_key_password = ""
+compartment_id       = ""

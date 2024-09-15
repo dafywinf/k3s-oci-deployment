@@ -17,3 +17,65 @@ accounts, this allowance is equivalent to 4 OCPUs and 24 GB of memory.
 2. Install the OCI CLI ([run-book](documentation/run-books/RB-02-oci-cli-setup.md)).
 3. Create a compartment as a logical container for all associated
    resources ([run-book](documentation/run-books/RB-03-create-compartment.md)).
+
+## Steps to Deploy the Application
+
+### Init the OCI Terraform Provider
+
+Run the following command:
+
+```bash
+terraform init
+```
+
+### Set the Authentication Variables
+
+values.auto.tfvars is a file in Terraform used for setting variable values. Terraform automatically loads variables from
+files with names ending in .auto.tfvars or matching the pattern *.auto.tfvars. This makes it easier to manage
+configurations by separating variable values into their own file, and it reduces the need to pass variables directly via
+the command line or environment variables.
+
+Rename the `values.auto.tfvars.example` file to `values.auto.tfvars` with your OCI credentials and other configuration
+settings.
+
+```bash
+region               = ""
+tenancy_ocid         = ""
+user_ocid            = ""
+fingerprint          = ""
+private_key_path     = ""
+private_key_password = ""
+compartment_id       = ""
+```
+
+Note: The `private_key_password` field is optional and can be left empty if the private key is not password-protected.
+
+Alternatively, you can set these variables as environment variables using the `TF_VAR_` variable naming convention:
+
+```bash
+# Mac/Linux
+export TF_VAR_region="your-region"
+export TF_VAR_tenancy_ocid="your-tenancy-ocid"
+export TF_VAR_user_ocid="your-user-ocid"
+export TF_VAR_fingerprint="your-fingerprint"
+export TF_VAR_private_key_path="/path/to/your/private/key"
+export TF_VAR_private_key_password="your-private-key-password"
+export TF_VAR_compartment_id="your-compartment-id"
+
+```
+
+### Plan the Terraform Deployment
+
+Run the following command to see what Terraform will do before actually doing it:
+
+```bash
+terraform plan
+```
+
+### Apply the Terraform Deployment
+
+Run the following command to create the infrastructure:
+
+```bash
+terraform apply
+```

@@ -3,3 +3,41 @@
 *.iws
 *.iml
 *.ipr
+
+
+
+### Terraform ###
+
+# Terraform files
+*.tfstate
+*.tfstate.*
+
+# Terraform plan files
+*.tfplan
+
+# Crash log files
+crash.log
+
+# Ignore override files as they are usually used to override resources locally and not meant to be committed
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Ignore sensitive variable files
+*.auto.tfvars
+
+# Ignore local Terraform directories
+.terraform/
+.terraform.lock.hcl
+
+# Ignore CLI configuration files
+.terraformrc
+terraform.rc
+
+# Ignore logs and other local files
+*.log
+
+# Ignore backup files created by Terraform
+*.tfvars.old
+*.tfvars.backup

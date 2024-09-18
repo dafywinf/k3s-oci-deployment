@@ -28,6 +28,18 @@ Run the following command:
 terraform init
 ```
 
+### Generate SSH Keys for Instance Access
+
+You'll need a pair for SSH keys to access the instances created by Terraform.
+
+‼️ The private key needs to be stored securely and should not be shared. The public key can be shared with the Terraform
+
+Use the ssh-keygen command to generate a new SSH key pair. In a secure directory in a Terminal, enter:
+
+```bash
+ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+```
+
 ### Set the Authentication Variables
 
 values.auto.tfvars is a file in Terraform used for setting variable values. Terraform automatically loads variables from
@@ -78,6 +90,19 @@ Run the following command to create the infrastructure:
 
 ```bash
 terraform apply
+```
+
+### Error: Out of Host Capacity
+
+An "out of host capacity" error indicates a temporary lack of Always Free shapes in your home region. Oracle is working
+to provide more capacity, though it might take several days before additional capacity is available in your home region.
+If your home region has multiple availability domains, try creating the instance in a different availability domain. If
+that doesn’t work, wait a while, and then try to launch the instance
+again. [More information](https://www.oracle.com/cloud/free/faq/).
+
+```bash
+│ Error: 500-InternalError, Out of host capacity.
+│ Suggestion: The service for this resource encountered an error. Please contact support for help with service: Core Instance
 ```
 
 # Appendix

@@ -14,7 +14,6 @@ data "oci_core_services" "services" {
     }
 }
 
-
 # Internet Gateway: Allows traffic between the VCN and the internet.
 resource "oci_core_internet_gateway" "ig" {
     compartment_id = oci_identity_compartment.k3s-compartment.id
@@ -79,6 +78,13 @@ resource "oci_core_security_list" "sl-public" {
     display_name   = "k3s-sl-public"
     vcn_id         = oci_core_vcn.vcn.id
 
+    egress_security_rules {
+        stateless        = false
+        destination      = "0.0.0.0/0"
+        destination_type = "CIDR_BLOCK"
+        protocol         = "all"
+    }
+
     ingress_security_rules {
         stateless = false
         source    = "0.0.0.0/0"
@@ -123,7 +129,6 @@ resource "oci_core_security_list" "sl-private" {
     compartment_id = oci_identity_compartment.k3s-compartment.id
     display_name   = "k3s-sl-private"
     vcn_id         = oci_core_vcn.vcn.id
-
 
     egress_security_rules {
         stateless        = false
